@@ -1,8 +1,9 @@
 package Controller;
 import Model.Customer;
-
+import Services.Services;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,7 +52,7 @@ public class CustomerController extends HttpServlet {
 			c.setAddress(request.getParameter("address"));
 			c.setEmail(request.getParameter("email"));
 			c.setPassword(request.getParameter("password"));
-			CustomerDao.insertUser(c);
+			CustomerDao.insertCustomer(c);
 			request.setAttribute("msg", "Data inserted Successfully");
 			RequestDispatcher rd = request.getRequestDispatcher("customer-login.jsp");
 			rd.forward(request, response);
@@ -60,7 +61,7 @@ public class CustomerController extends HttpServlet {
 			Customer c=new Customer();
 			c.setEmail(request.getParameter("email"));
 			c.setPassword(request.getParameter("password"));
-			Customer c1=CustomerDao.login(c);
+			Customer c1=CustomerDao.checkCustomerLogin(c);
 			if(c1==null) {
 			request.setAttribute("data", "email or password incorrect");
 			request.getRequestDispatcher("customer-login.jsp").forward(request, response);
@@ -79,10 +80,85 @@ public class CustomerController extends HttpServlet {
 			c.setContact(request.getParameter("contact"));
 			c.setAddress(request.getParameter("address"));
 			c.setEmail(request.getParameter("email"));
-			CustomerDao.updateCustomer(c);
+			CustomerDao.updateCustomerProfile(c);
 			response.sendRedirect("customer-index.jsp");
 			
 		}
-	}
+			else if(action.equalsIgnoreCase("change")) {
+				int id= Integer.parseInt(request.getParameter("id"));
+				String op=request.getParameter("op");
+				String np=request.getParameter("np");
+				String cnp=request.getParameter("cnp");
+				boolean flag=CustomerDao.checkOldPassword(id, op);
+				if(flag==true) {
+					if(np.equals(cnp)) {
+						CustomerDao.updatePassword(cnp, id);
+						response.sendRedirect("customer-index.jsp");
+						
+					}
+					else {
+						request.setAttribute("msg1", "New Password and Confirm new password not matched");
+						request.getRequestDispatcher("customer-change-password.jsp").forward(request, response);
+						
+					}
+				}
+				else {
+					request.setAttribute("msg", "old password not matched");
+					request.getRequestDispatcher("customer-change-password.jsp").forward(request, response);
+				}
+				
+			}
+			else if (action.equalsIgnoreCase("get otp")) {
+				String email = request.getParameter("email");
+				boolean flag = CustomerDao.checkEmail(email);
+				System.out.println(flag);
+				if (flag == true) {
+					Services s = new Services();
+					Random r = new Random();
+					int num = r.nextInt(9999);
+//					System.out.println(num);
+					s.sendMail(email, num);
+//					System.out.println(email+num);
+					request.setAttribute("email", email);
+					request.setAttribute("otp", num);
+					request.getRequestDispatcher("customer-verify-otp.jsp").forward(request, response);
+				} else {
+					request.setAttribute("msg", "email id not registerd");
+					request.getRequestDispatcher("customer-forgot-password.jsp").forward(request, response);
+				}
+			} 
+			else if (action.equalsIgnoreCase("verify")) {
+				String email = request.getParameter("email");
+				int otp1 = Integer.parseInt(request.getParameter("otp1"));
+				int otp2 = Integer.parseInt(request.getParameter("otp2"));
+//				System.out.println(email+otp1+otp2);
+				if (otp1==otp2) {
+					request.setAttribute("email", email);
+					request.getRequestDispatcher("customer-new-password.jsp").forward(request, response);
+				} else {
+					request.setAttribute("validate", "otp not matched");
+					request.getRequestDispatcher("customer-verify-otp.jsp").forward(request, response);
+				}
+			}
+			else if(action.equalsIgnoreCase("new password")) {
+				String email = request.getParameter("email");
+				String np = request.getParameter("np");
+				String cnp = request.getParameter("cnp");
+//				System.out.println(email+np+cnp);
+				if(np.equals(cnp)) {
+					CustomerDao.newPassword(np, email);
+					
+					request.setAttribute("msg3", "password changed successfully");
+					request.getRequestDispatcher("customer-login.jsp").forward(request, response);
+				}
+				else {
+					request.setAttribute("msg", "new password and confirm new ppassword not matched");
+					request.getRequestDispatcher("customer-new-password.jsp").forward(request, response);
+				}
+			}
+		}
 
 }
+	
+
+
