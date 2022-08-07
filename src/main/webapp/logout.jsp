@@ -10,7 +10,7 @@
 <%
 session.removeAttribute("data");
 session.invalidate();
-response.sendRedirect("customer-login.jsp");
+response.sendRedirect("index.jsp");
 %>
 </body>
 </html>

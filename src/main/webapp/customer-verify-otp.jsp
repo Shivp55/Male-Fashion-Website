@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Welcome to one of the best online fashion websites</p>
+                            <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -139,23 +139,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__text">
                         <div class="section-title">
-                        
-                            <h2>Customer Login</h2>
-                             <h4>
-                            	<%String msg3 = (String)request.getAttribute("msg3"); %>
-                           		<% 
-                           			if(msg3!=null){
-                           				out.print(msg3);
-                           			}
-                           		%>
-                            </h4>
+                            <h2>Verify</h2>
                               <h4>
-                            	<%String msg = (String)request.getAttribute("msg"); %>
-                           		<% 
-                           			if(msg!=null){
-                           				out.print(msg);
-                           			}
-                           		%>
                             </h4>
                         </div>
                     </div>
@@ -164,26 +149,25 @@
                     <div class="contact__form">
                         <form action="CustomerController" method="post">
                             <div class="row">
+                            	<%String email = (String)request.getAttribute("email"); %>
+                               	<%int otp1 = (Integer)request.getAttribute("otp"); %>
+                               	<input type="hidden" name="email" value="<%=email%>">
+                               	<input type="hidden" name="otp1" value="<%=otp1%>">
                                 <div class="col-lg-12">
-                                    <input type="email" placeholder="Email" name="email">
+                                    <input type="text" placeholder="enter otp" name="otp2">
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="password" placeholder="Password" name="password">
+                                    <button type="submit" class="site-btn" name="action" value="verify">Verify</button>
                                 </div>
-                                <div class="col-lg-12">
-                                    <button type="submit" class="site-btn" name="action" value="login">Login</button>
+                                 <div class="col-lg-12">
+                                 <%String validate = (String)request.getAttribute("validate"); %>
+                                 <%if(validate!=null){ %>
+                                 	<h4><%out.print(validate); %></h4>
+                                 <%} %>
                                 </div>
-                                <a href="seller-forgot-password.jsp">Forgot Password?</a>
                             </div>
                         </form>
-                        <%
-                        String login = (String)request.getAttribute("login");
-                        if(login!=null){
-                        	out.print(login);
-                        }
-                        %>
                     </div>
-                            <h4><a href="customer-forgot-password.jsp">Forgot Password ?</a></h4>
                 </div>
             </div>
         </div>

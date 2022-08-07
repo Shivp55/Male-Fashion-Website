@@ -148,6 +148,22 @@
                            			}
                            		%>
                             </h4>
+                            <h4>
+                            <%String msg4=(String)request.getAttribute("msg4"); %>
+                            <%
+                            if(msg4!=null){
+                            	out.println(msg4);
+                            }
+                            %>
+                            </h4>
+                            <h4>
+                            <%String msg5=(String)request.getAttribute("msg5"); %>
+                            <%
+                            if(msg5!=null){
+                            	out.println(msg5);
+                            }
+                            %>
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -164,6 +180,7 @@
                                 <div class="col-lg-12">
                                     <button type="submit" class="site-btn" name="action" value="login">Login</button>
                                 </div>
+                                [<a href="seller-forgot-password.jsp">Forgot Password?</a>]
                             </div>
                         </form>
                     </div>

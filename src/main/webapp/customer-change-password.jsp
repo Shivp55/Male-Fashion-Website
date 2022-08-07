@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page import="Model.Customer" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -27,6 +29,17 @@
 </head>
 
 <body>
+<%
+Customer c=null;
+if(session.getAttribute("data")!=null){
+	c=(Customer)session.getAttribute("data");
+}
+else{
+	response.sendRedirect("customer-login.jsp");
+}
+%>
+
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -62,14 +75,14 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-     <!-- Header Section Begin -->
+    <!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Welcome to one of the best online fashion websites</p>
+                            <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -101,18 +114,21 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="index.jsp">Home</a></li>
-                            <li><a href="#">Registration</a>
+                            <li class="active"><a href="customer-index.jsp">Home</a></li>
+                            <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="customer-registration.jsp">Customer</a></li>
-                                    <li><a href="seller-registration.jsp">Seller</a></li>
+                                    <li><a href="./about.html">About Us</a></li>
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Login</a>
+                             <li><a href="#"><%=c.getName() %></a>
                                 <ul class="dropdown">
-                                    <li><a href="customer-login.jsp">Customer</a></li>
-                                    <li><a href="seller-login.jsp">Seller</a></li>
-                                    <li><a href="admin-login.jsp">Admin</a></li>
+                                    <li><a href="customer-profile.jsp">Profile</a></li>
+                                    <li><a href="customer-change-password.jsp">Change Password</a></li>
+                                    <li><a href="customer-logout.jsp">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -130,7 +146,6 @@
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
-    <!-- Header Section End -->
 
     <!-- Contact Section Begin -->
     <section class="contact spad">
@@ -139,51 +154,48 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__text">
                         <div class="section-title">
-                        
-                            <h2>Customer Login</h2>
-                             <h4>
-                            	<%String msg3 = (String)request.getAttribute("msg3"); %>
-                           		<% 
-                           			if(msg3!=null){
-                           				out.print(msg3);
-                           			}
-                           		%>
-                            </h4>
-                              <h4>
+                            <h2>Customer Registration</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                <h4><%=c.getName() %></h4>
+                    <div class="contact__form">
+                        <form action="CustomerController" method="post">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                	<input type="hidden" name="id" value="<%=c.getId()%>">
+                                    <input type="text" placeholder="Old Password" name="op">
+                                </div>
+                                 <div class="col-lg-12">
+                                    <input type="text" placeholder="New Password" name="np">
+                                </div>
+                                 <div class="col-lg-12">
+                                    <input type="text" placeholder="Confirm New Password" name="cnp">
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="submit" class="site-btn" name="action" value="Change">Change Password</button>
+                                </div>
+                                <h4>
                             	<%String msg = (String)request.getAttribute("msg"); %>
                            		<% 
                            			if(msg!=null){
                            				out.print(msg);
                            			}
                            		%>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="contact__form">
-                        <form action="CustomerController" method="post">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="email" placeholder="Email" name="email">
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="password" placeholder="Password" name="password">
-                                </div>
-                                <div class="col-lg-12">
-                                    <button type="submit" class="site-btn" name="action" value="login">Login</button>
-                                </div>
-                                <a href="seller-forgot-password.jsp">Forgot Password?</a>
+                                </h4>
+                                 <h4>
+                            	<%String msg1 = (String)request.getAttribute("msg1"); %>
+                           		<% 
+                           			if(msg1!=null){
+                           				out.print(msg1);
+                           			}
+                           		%>
+                                </h4>
+                                
                             </div>
                         </form>
-                        <%
-                        String login = (String)request.getAttribute("login");
-                        if(login!=null){
-                        	out.print(login);
-                        }
-                        %>
                     </div>
-                            <h4><a href="customer-forgot-password.jsp">Forgot Password ?</a></h4>
                 </div>
             </div>
         </div>
@@ -242,7 +254,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright Â©
+                        <p>Copyright ©
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>2020
