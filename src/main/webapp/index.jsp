@@ -27,6 +27,26 @@
 </head>
 
 <body>
+
+<hr>
+<div align="center">
+<%
+Integer counter = (Integer)application.getAttribute("counter");
+if (counter ==null || counter == 0)
+{
+
+counter = 1;
+}
+else
+{
+
+counter++;
+}
+application.setAttribute("counter", counter);
+
+%>
+</div>
+<hr>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -95,7 +115,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -115,7 +135,15 @@
                                     <li><a href="admin-login.jsp">Admin</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                            <li><a href="#">Rate Us</a>
+                            	<ul class="dropdown">
+                                    <li><a href="contact.jsp">Contact us</a></li>
+                                    <li><a href="give-review.jsp">Review Us</a></li>
+                                    
+                                </ul>
+                                    
+                            </li>
+                                                     </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
@@ -141,10 +169,10 @@
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
                                 <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2030</h2>
+                                <h2>Fall - Winter Collections 2021</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                 commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="customer-login.jsp" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -165,7 +193,7 @@
                                 <h2>Fall - Winter Collections 2030</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                 commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="customer-login.jsp" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -192,7 +220,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Clothing Collections 2030</h2>
-                            <a href="#">Shop now</a>
+                            <a href="customer-login.jsp">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +231,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Accessories</h2>
-                            <a href="#">Shop now</a>
+                            <a href="customer-login.jsp">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -213,8 +241,8 @@
                             <img src="img/banner/banner-3.jpg" alt="">
                         </div>
                         <div class="banner__item__text">
-                            <h2>Shoes Spring 2030</h2>
-                            <a href="#">Shop now</a>
+                            <h2>Shoes Spring 2021</h2>
+                            <a href="customer-login.jsp">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -689,16 +717,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
+                       <script>
                                 document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
+                            </script>
+                             </div>
                 </div>
             </div>
         </div>

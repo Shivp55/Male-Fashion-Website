@@ -3,14 +3,19 @@ package Dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import connection.DBConnection;
 import Model.Customer;
 
 public class CustomerDao {
 	public static void insertCustomer(Customer c) {
+		boolean flag=false;
+		
 		try {
 			Connection conn = DBConnection.createConnection();
+			
 			String sql="insert into customer(name,contact,address,email,password) values(?,?,?,?,?)";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, c.getName());
@@ -20,10 +25,31 @@ public class CustomerDao {
 			pst.setString(5, c.getPassword());
 			pst.executeUpdate();
 			System.out.println("data inserted");
-		} catch (Exception e) {
+			
+		} 
+			catch (Exception e) {
 			e.printStackTrace();
+			}
 		}
+	public static boolean insertBooleanUser(Customer c) {
+		boolean flag=false;
+		try {
+			Connection conn=DBConnection.createConnection();
+			String sql="select * from customer where email=? ";
+			PreparedStatement pst=conn.prepareStatement(sql);
+			pst.setString(1, c.getEmail());
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()) {
+				flag=true;
+			}
+		}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		return flag;
+		
 	}
+	
 	public static Customer checkCustomerLogin(Customer c) {
 		Customer c1  =null;
 		try {
@@ -63,6 +89,7 @@ public class CustomerDao {
 			e.printStackTrace();
 		}
 	}
+	
 	public static boolean checkOldPassword(int id,String op) {
 		boolean flag = false;
 		try {
@@ -122,5 +149,52 @@ public class CustomerDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static int getAllCustomers(){
+		int i=0;
+		try {
+			Connection conn = DBConnection.createConnection();
+			String sql = "select * from customer";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()) {
+				i=i+1;
+			}
+			
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+		
+	}
+	public static List<Customer> getAllCustomer(){
+		List<Customer> list=new ArrayList();
+		try {
+			Connection conn = DBConnection.createConnection();
+			String sql = "select * from customer";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()) {
+				Customer c=new Customer();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setContact(rs.getString("contact"));
+				c.setAddress(rs.getString("address"));
+				c.setEmail(rs.getString("email"));
+				c.setPassword(rs.getString("password"));
+				list.add(c);
+			}
+			
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+		
 	}
 }

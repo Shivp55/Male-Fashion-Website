@@ -27,6 +27,32 @@
 </head>
 
 <body>
+<script>  
+var request=new XMLHttpRequest();  
+function searchInfo()
+{  
+	var name=document.vinform.email.value;  
+	var url="AjaxSearch2.jsp?val="+name;  
+  	try
+  	{  
+		request.onreadystatechange=function()
+		{  
+			if(request.readyState==4)
+			{  
+				var val=request.responseText;  
+				document.getElementById('tops').innerHTML=val;  
+			}  
+		}  
+		request.open("GET",url,true);  
+		request.send();  
+	}
+  	catch(e)
+  	{
+  		alert("Unable to connect to server");
+  	}  
+}  
+</script> 
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -62,7 +88,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-     <!-- Header Section Begin -->
+    <!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -95,7 +121,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -115,7 +141,15 @@
                                     <li><a href="admin-login.jsp">Admin</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                            <li><a href="#">Rate Us</a>
+                            	<ul class="dropdown">
+                                    <li><a href="contact.jsp">Contact us</a></li>
+                                    <li><a href="give-review.jsp">Review Us</a></li>
+                                    
+                                </ul>
+                                    
+                            </li>
+                                                     </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
@@ -225,16 +259,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
+                        <script>
                                 document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
+                            </script>
+                            </div>
                 </div>
             </div>
         </div>

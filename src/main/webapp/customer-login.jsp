@@ -61,15 +61,14 @@
         </div>
     </div>
     <!-- Offcanvas Menu End -->
-
-     <!-- Header Section Begin -->
+<!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Welcome to one of the best online fashion websites</p>
+                            <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -95,7 +94,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -115,7 +114,15 @@
                                     <li><a href="admin-login.jsp">Admin</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                            <li><a href="#">Rate Us</a>
+                            	<ul class="dropdown">
+                                    <li><a href="contact.jsp">Contact us</a></li>
+                                    <li><a href="give-review.jsp">Review Us</a></li>
+                                    
+                                </ul>
+                                    
+                            </li>
+                                                     </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
@@ -149,6 +156,14 @@
                            			}
                            		%>
                             </h4>
+                            <h4>
+                            	<%String data = (String)request.getAttribute("data"); %>
+                           		<% 
+                           			if(data!=null){
+                           				out.print(data);
+                           			}
+                           		%>
+                            </h4>
                               <h4>
                             	<%String msg = (String)request.getAttribute("msg"); %>
                            		<% 
@@ -156,6 +171,27 @@
                            				out.print(msg);
                            			}
                            		%>
+                            </h4>
+                            <h4>
+                            <%String msg6=(String)request.getAttribute("msg6"); %>
+                            <%
+                            if(msg!=null){
+                            	out.println(msg6);
+                            }
+                            %>
+                            
+                            </h4>
+                            <h4>
+                            <%
+                            String msg8=(String)request.getAttribute("msg8"); 
+                             
+                            if(msg8!=null){
+                            	out.println(msg8);
+                            }
+                            else{
+                            	out.println("Please Login");
+                            }
+                            %>
                             </h4>
                         </div>
                     </div>
@@ -173,19 +209,20 @@
                                 <div class="col-lg-12">
                                     <button type="submit" class="site-btn" name="action" value="login">Login</button>
                                 </div>
-                                <a href="seller-forgot-password.jsp">Forgot Password?</a>
+                               
                             </div>
+                            
                         </form>
+                         
                         <%
                         String login = (String)request.getAttribute("login");
                         if(login!=null){
                         	out.print(login);
                         }
                         %>
-                    </div>
-                            <h4><a href="customer-forgot-password.jsp">Forgot Password ?</a></h4>
-                </div>
+                  
             </div>
+            <a href="customer-forgot-password.jsp">Forgot Password?</a>
         </div>
     </section>
     <!-- Contact Section End -->
@@ -241,16 +278,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
+                       <script>
                                 document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
+                            </script>
+                             </div>
                 </div>
             </div>
         </div>

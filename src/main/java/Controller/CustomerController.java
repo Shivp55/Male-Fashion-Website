@@ -52,10 +52,18 @@ public class CustomerController extends HttpServlet {
 			c.setAddress(request.getParameter("address"));
 			c.setEmail(request.getParameter("email"));
 			c.setPassword(request.getParameter("password"));
+			boolean flag=CustomerDao.insertBooleanUser(c);
+			if(flag==true)
+			{
+				request.setAttribute("msg8","Email id Already exists");
+				request.getRequestDispatcher("customer-login.jsp").forward(request, response);
+			}
+			else {
 			CustomerDao.insertCustomer(c);
 			request.setAttribute("msg", "Data inserted Successfully");
 			RequestDispatcher rd = request.getRequestDispatcher("customer-login.jsp");
 			rd.forward(request, response);
+			}
 		}
 		else if(action.equalsIgnoreCase("login")) {
 			Customer c=new Customer();
@@ -81,6 +89,7 @@ public class CustomerController extends HttpServlet {
 			c.setAddress(request.getParameter("address"));
 			c.setEmail(request.getParameter("email"));
 			CustomerDao.updateCustomerProfile(c);
+			System.out.print(c);
 			response.sendRedirect("customer-index.jsp");
 			
 		}

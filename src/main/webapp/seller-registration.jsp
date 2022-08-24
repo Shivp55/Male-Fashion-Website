@@ -24,9 +24,88 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+     <script>
+	function check_fname(){
+		var f = document.vinform.name.value;
+		
+		var reg = /^[A-Za-z]+$/;
+		if(f.trim()==""){
+			document.getElementById("errorfname").innerHTML="Please enter your First name";
+		}
+		else if(!reg.test(f)){
+			document.getElementById("errorfname").innerHTML="Please enter only Alphabet";
+			
+		}else{
+			document.getElementById("errorfname").innerHTML="";
+		}
+	}
+	function check_contact(){
+		var f = document.vinform.contact.value;
+	
+		var reg = /^[0-9]+$/;
+		if(f.trim()==""){
+			document.getElementById("errorcontact").innerHTML="Please enter your contact";
+		}
+		else if(!reg.test(f)){
+			document.getElementById("errorcontact").innerHTML="Please enter only Digit";
+			
+		}else{
+			document.getElementById("errorcontact").innerHTML="";
+		}
+	}
+	
+	
+    
+    </script>
+    
 </head>
 
 <body>
+
+<script>  
+function check_email(){
+	var f = document.vinform.email.value;
+	
+	var reg = /(\w+)\@(\w+)\.[a-zA-Z]/g;
+	if(f.trim()==""){
+		document.getElementById("erroremail").innerHTML="Please enter your email";
+	}
+	else if(!reg.test(f)){
+		document.getElementById("erroremail").innerHTML="Please enter valid email";
+		
+	}
+	
+	else{
+		document.getElementById("erroremail").innerHTML="";
+	}
+}
+
+var request=new XMLHttpRequest();  
+function searchInfo()
+{  
+	var name=document.vinform.email.value; 
+	var password=document.vinform.password.value;
+	var url="Seller-Ajax-Search.jsp?val="+name+"&val2="+password;  
+	try
+  	{  
+		request.onreadystatechange=function()
+		{  
+			if(request.readyState==4)
+			{  
+				var val=request.responseText();  
+				document.getElementById('tops').innerHTML=val;  
+			}  
+		}  
+		request.open("GET",url,true);  
+		request.send();  
+	}
+  	catch(e)
+  	{
+  		alert("Unable to connect to server");
+  	}  
+}  
+</script> 
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -61,8 +140,7 @@
         </div>
     </div>
     <!-- Offcanvas Menu End -->
-
-     <!-- Header Section Begin -->
+<!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -95,7 +173,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -115,7 +193,15 @@
                                     <li><a href="admin-login.jsp">Admin</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                            <li><a href="#">Rate Us</a>
+                            	<ul class="dropdown">
+                                    <li><a href="contact.jsp">Contact us</a></li>
+                                    <li><a href="give-review.jsp">Review Us</a></li>
+                                    
+                                </ul>
+                                    
+                            </li>
+                                                     </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
@@ -145,22 +231,29 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__form">
-                        <form action="SellerController" method="post">
+                        <form action="SellerController" method="post" name="vinform"  >
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <input type="text" placeholder="Name" name="name">
+                                    <input type="text" placeholder="Name" name="name" onblur="check_fname()">
+                                    <td><span id="errorfname" style="color:red;"></span></td>
                                 </div>
                                  <div class="col-lg-12">
-                                    <input type="text" placeholder="Contact" name="contact">
+                                    <input type="text" placeholder="Contact" name="contact" onblur="check_contact()">
+                                     <td><span id="errorcontact" style="color:red;"></span> </td>
+                                    
                                 </div>
                                  <div class="col-lg-12">
                                     <input type="text" placeholder="Address" name="address">
+                                    
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="email" placeholder="Email" name="email">
+                                    <input type="email" placeholder="Email" name="email"  onsubmit="check_email()" onblur="searchInfo();">
+                                    <td><span id="tops" style="color:red;"></span> </td>
+                                    <td><span id="erroremail" style="color:green;"></span> </td>
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="password" placeholder="Password" name="password">
+                                    <input type="password" placeholder="Password" name="password" onblur="searchInfo()">
+                                     <td><span id="tops" style="color:red;"></span> </td>
                                 </div>
                                 <div class="col-lg-12">
                                     <button type="submit" class="site-btn" name="action" value="register">Register</button>

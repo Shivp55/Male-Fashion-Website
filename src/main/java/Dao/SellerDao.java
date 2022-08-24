@@ -1,6 +1,6 @@
 package Dao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.*;
 
 import Model.Seller;
@@ -133,5 +133,49 @@ public class SellerDao {
 			e.printStackTrace();
 		}
 	}
-	
+	public static List<Seller> getAllSeller(){
+		List<Seller> list = new ArrayList<Seller>();
+		try {
+			Connection conn = DBConnection.createConnection();
+			String sql = "select * from seller";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				Seller s = new Seller();
+				s.setId(rs.getInt("id"));
+				s.setName(rs.getString("name"));
+				s.setContact(rs.getString("contact"));
+				s.setAddress(rs.getString("address"));
+				s.setEmail(rs.getString("email"));
+				s.setPassword(rs.getString("password"));
+				list.add(s);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public static int getAllSellers(){
+		int i=0;
+		try {
+			Connection conn = DBConnection.createConnection();
+			String sql = "select * from seller";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()) {
+				i=i+1;
+			}
+			
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+		
+	}
 }
+
+	
+

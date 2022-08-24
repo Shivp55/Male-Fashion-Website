@@ -108,7 +108,7 @@ else{
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -117,11 +117,11 @@ else{
                             <li class="active"><a href="customer-index.jsp">Home</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="./about.jsp">About Us</a></li>
+                                    <li><a href="./shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="./checkout.jsp">Check Out</a></li>
+                                    <li><a href="./blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
                              <li><a href="#"><%=c.getName() %></a>
@@ -154,7 +154,7 @@ else{
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__text">
                         <div class="section-title">
-                            <h2>Customer Registration</h2>
+                            <h2>Change Password</h2>
                         </div>
                     </div>
                 </div>
@@ -253,15 +253,9 @@ else{
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </script>
                     </div>
                 </div>
             </div>

@@ -86,6 +86,16 @@ public class ProductController extends HttpServlet {
 			ProductDao.insertProduct(p);
 			response.sendRedirect("seller-index.jsp");
 		}
-	}
-
+	
+		
+		else if(action.equalsIgnoreCase("delete")) {
+			Product p=new Product();
+			p.setPid(Integer.parseInt((request.getParameter("id2"))));;
+			
+			ProductDao.deleteProduct(p);
+			request.setAttribute("delete", "data deleted");
+			response.sendRedirect("seller-index.jsp");	
+		}
+			
+	}		
 }

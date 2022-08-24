@@ -5,6 +5,7 @@ public class Product {
 	private double pprice;
 	private String pname,pcategory,image;
 	
+	
 	public int getPid() {
 		return pid;
 	}
@@ -55,7 +56,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [pid=" + pid + ", sid=" + sid + ", pprice=" + pprice + ", pname=" + pname + ", pcategory="
-				+ pcategory + ", image=" + image + "]";
+		return "Product [pid=" + pid + ", sid=" + sid + ", pprice=" + pprice
+				+ ", pname=" + pname + ", pcategory=" + pcategory + ", image=" + image + "]";
 	}
 }
