@@ -76,8 +76,7 @@
 
     <!-- Header Section Begin -->
     <header class="header">
-       
-        <div class="container">
+                <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
@@ -87,32 +86,41 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="customer-index.jsp">Home</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./about.jsp">About Us</a></li>
-                                    <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
-                                    <li><a href="./checkout.jsp">Check Out</a></li>
-                                    <li><a href="./blog-details.jsp">Blog Details</a></li>
+                            <li class="active"><a href="customer-index.jsp">Home</a></li>
+                            <li><a href="#">Your Activity</a>
+                                <ul class="dropdown"> 
+                                    <li><a href="shop.jsp">Shop Details</a></li>
+                                    <li><a href="./customer-add-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="./customer-checkout.jsp">Check Out</a></li>
+                                    
+                                    
                                 </ul>
                             </li>
-                             <li class="active"><a href="#"><%=c.getName() %></a>
+                             <li><a href="#"><%=c.getName() %></a>
                                 <ul class="dropdown">
                                     <li><a href="customer-profile.jsp">Profile</a></li>
                                     <li><a href="customer-change-password.jsp">Change Password</a></li>
-                                    <li><a href="customer-logout.jsp">Logout</a></li>
+                                    <li><a href="logout.jsp">Logout</a></li>
                                 </ul>
                             </li>
+                             <li>
+                            <a href="#">Our Group</a>
+                            	<ul class="dropdown">
+                            		<li><a href="./blog.jsp">Blog</a></li>
+                            		<li><a href="./contact.jsp">Contact</a></li>
+                            		<li><a href="./about.jsp">About Us</a></li>
+                            		</ul>
+                           	</li>
+                           	
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="customer-wishlist"><img src="img/icon/heart.png" alt=""></a>
+                        <a href="customer-add-cart.jsp"><img src="img/icon/cart.png" alt="">cart <span>0</span></a>
+                        <div class="price"></div>
                     </div>
                 </div>
             </div>

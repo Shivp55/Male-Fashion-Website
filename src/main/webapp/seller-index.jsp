@@ -26,15 +26,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script type="text/javascript">
-    alert("<%String delete=(String)request.getAttribute("delete");
-    if(delete!=null){
-    	out.print(delete);
-    }
-    %>");
-    
-    </script>
-</head>
+    </head>
 
 <body>
 <%
@@ -68,7 +60,7 @@ else{
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="customer-index.jsp">Home</a></li>
+                            <li class="active"><a href="seller-index.jsp">Home</a></li>
                             <li><a href="#">Product</a>
                                 <ul class="dropdown">
                                     <li><a href="seller-upload-product.jsp">Upload Product</a></li>

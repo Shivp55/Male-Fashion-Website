@@ -83,19 +83,66 @@ public class ProductController extends HttpServlet {
 			p.setPname(request.getParameter("pname"));
 			p.setPprice(Double.parseDouble(request.getParameter("pprice")));
 			p.setPcategory(request.getParameter("pcategory"));
-			ProductDao.insertProduct(p);
-			response.sendRedirect("seller-index.jsp");
+			String pcty=request.getParameter("pcategory");
+			System.out.print(pcty);
+			String s1="newarrivals";
+			String s2="Shoes";
+			String s3="Watchess";
+			String s4="Specss";
+			if(pcty.length()==s1.length()) {
+				ProductDao.insertIntoNewArrivals(p);
+				response.sendRedirect("seller-upload-product.jsp");	
+			}
+			else if(pcty.length()==s2.length()) {
+				ProductDao.insertIntoShoes(p);
+				response.sendRedirect("seller-upload-product.jsp");	
+		
+			}
+			else if(pcty.length()==s3.length()) {
+				ProductDao.insertIntoWatches(p);
+				response.sendRedirect("seller-upload-product.jsp");	
+		
+			}
+			else if (pcty.length()==s4.length()){
+				ProductDao.insertIntoSpecs(p);
+				response.sendRedirect("seller-upload-product.jsp");	
+		
+			}
 		}
 	
 		
-		else if(action.equalsIgnoreCase("delete")) {
+		else if(action.equalsIgnoreCase("delete4")) {
 			Product p=new Product();
 			p.setPid(Integer.parseInt((request.getParameter("id2"))));;
 			
 			ProductDao.deleteProduct(p);
 			request.setAttribute("delete", "data deleted");
-			response.sendRedirect("seller-index.jsp");	
+			response.sendRedirect("seller-manage-product.jsp");	
 		}
+		else if(action.equalsIgnoreCase("delete1")) {
+			Product p=new Product();
+			p.setPid(Integer.parseInt((request.getParameter("id2"))));;
 			
+			ProductDao.deleteShoes(p);
+			request.setAttribute("delete", "data deleted");
+			response.sendRedirect("seller-manage-product.jsp");	
+		}
+		else if(action.equalsIgnoreCase("delete2")) {
+			Product p=new Product();
+			p.setPid(Integer.parseInt((request.getParameter("id2"))));;
+			
+			ProductDao.deleteSpecs(p);
+			request.setAttribute("delete", "data deleted");
+			response.sendRedirect("seller-manage-product.jsp");	
+		}
+		
+		else if(action.equalsIgnoreCase("delete3")) {
+			Product p=new Product();
+			p.setPid(Integer.parseInt((request.getParameter("id2"))));;
+			
+			ProductDao.deleteWatches(p);
+			request.setAttribute("delete", "data deleted");
+			response.sendRedirect("seller-manage-product.jsp");	
+		}
 	}		
 }

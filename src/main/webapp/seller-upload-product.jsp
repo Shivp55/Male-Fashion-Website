@@ -37,41 +37,19 @@ else{
 	response.sendRedirect("seller-login.jsp");
 }
 %>
+    
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
-  
-     <!-- Header Section Begin -->
-       <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="#">Sign in</a>
-                                <a href="#">FAQs</a>
-                            </div>
-                            <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
-                                <ul>
-                                    <li>USD</li>
-                                    <li>EUR</li>
-                                    <li>USD</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+   
+    
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -89,11 +67,11 @@ else{
                                     <li><a href="seller-manage-product.jsp">Manage Product</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><%=s.getName() %></a>
+                             <li><a href="#"><%=s.getName() %></a>
                                 <ul class="dropdown">
-                                    <li><a href="customer-login.jsp">Profile</a></li>
-                                    <li><a href="seller-login.jsp">Change Password</a></li>
-                                    <li><a href="admin-login.jsp">Logout</a></li>
+                                    <li><a href="seller-profile.jsp">Profile</a></li>
+                                    <li><a href="seller-change-password.jsp">Change Password</a></li>
+                                    <li><a href="logout.jsp">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -139,7 +117,13 @@ else{
                                     <input type="text" placeholder="Product Price" name="pprice">
                                 </div>
                                  <div class="col-lg-12">
-                                    <input type="text" placeholder="Product Category" name="pcategory">
+                                    <select id="cty" name="pcategory" >
+								    <option value="newarrivals" selected>Clothes</option>
+								    <option value="shoes">Shoes</option>
+								    <option value="specss">Specs</option>
+								    <option value="watchess">Watches</option>
+								    </select>
+                                    <br><br>
                                 </div>
                                 
                                 <div class="col-lg-12">

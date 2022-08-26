@@ -77,8 +77,7 @@ function searchInfo()
 </script>
 
 
-
-    <!-- Page Preloder -->
+ <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -115,56 +114,42 @@ function searchInfo()
 
     <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="#">Sign in</a>
-                                <a href="#">FAQs</a>
-                            </div>
-                            <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
-                                <ul>
-                                    <li>USD</li>
-                                    <li>EUR</li>
-                                    <li>USD</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
+                <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                        <a href="./customer-index.jsp"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./index.jsp">Home</a></li>
-                            <li class="active"><a href="./shop.jsp">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./about.jsp">About Us</a></li>
-                                    <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                            <li class="active"><a href="customer-index.jsp">Home</a></li>
+                            <li><a href="#">Your Activity</a>
+                                <ul class="dropdown"> 
+                                    <li><a href="shop.jsp">Shop Details</a></li>
+                                    <li><a href="./customer-add-cart.jsp">Shopping Cart</a></li>
                                     <li><a href="./checkout.jsp">Check Out</a></li>
-                                    <li><a href="./blog-details.jsp">Blog Details</a></li>
+                                    
+                                    
                                 </ul>
                             </li>
-                            <li><a href="./blog.jsp">Blog</a></li>
-                            <li><a href="./contact.jsp">Contacts</a></li>
+                             <li><a href="#"><%=c.getName() %></a>
+                                <ul class="dropdown">
+                                    <li><a href="customer-profile.jsp">Profile</a></li>
+                                    <li><a href="customer-change-password.jsp">Change Password</a></li>
+                                    <li><a href="logout.jsp">Logout</a></li>
+                                </ul>
+                            </li>
+                             <li>
+                            <a href="#">Our Group</a>
+                            	<ul class="dropdown">
+                            		<li><a href="./blog.jsp">Blog</a></li>
+                            		<li><a href="./contact.jsp">Contact</a></li>
+                            		<li><a href="./about.jsp">About Us</a></li>
+                            		</ul>
+                           	</li>
+                           	
                         </ul>
                     </nav>
                 </div>
@@ -211,9 +196,14 @@ function searchInfo()
                             <thead>
                                 <tr>
                                 	<th>Product Image</th>
-                                    
-                                    <th>Quantity</th>
-                                    <th>Total Price</th>
+                                	<th>&nbsp;</th>
+                                	<th>Product Name&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                	
+                                		<th>&nbsp;</th>
+                                    <th>Total Price&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                   	<th>&nbsp;</th>
+                                   		<th>&nbsp;</th>
+                                   
                                     <th>Delete Product</th>
                                 </tr>
                             </thead>
@@ -227,32 +217,72 @@ function searchInfo()
                                     <td >
                                         <div class="product__cart__item__pic">
                                             <img src="uploaded images/<%=c1.getImage() %>" alt="">
-                                            <h6><%=c1.getPname() %></h6>
-                                        </div></td>
-                                        <td class="product__cart__item">
-                                        <div class="product__cart__item__text">
+                                            
+                                        </div>
+                                     
+                                   </td>
+                                   <td >
+                                        <div class="product__cart__item__pic">
+                                            
+                                            
+                                        </div>
+                                     
+                                   </td>
+
+                                   
+                                   
+                                   
+                                   
+                                  <td >
+                                        <div class="product__cart__item__pic">
+                                           <h4><%=c1.getPname() %></h4>
+                                            
+                                        </div>
+                                     
+                                   </td>
+                                   <td >
+                                        <div class="product__cart__item__pic">
+                                            
+                                            
+                                        </div>
+                                     
+                                   </td>
+                                   
+                                    <td >
+                                        <div class="product__cart__item__pic">
+                                           <h4><i class="fa fa-rupee"></i><%=c1.getPprice()%>   </h4>
+                                            
+                                        </div>
+                                     
+                                   </td>
+                                   <td >
+                                        <div class="product__cart__item__pic">
+                                            
+                                            
+                                        </div>
+                                     
+                                   </td>
+                                    
                                         
-                                        <form  name="vinform">
-                                        	<select id="select" onchange="select();" name="qty">
-												  <option selected>1</option>
-												  <option >2</option>
-												  <option >3</option>
-												  <option >4</option>
-												</select>
-												
-                                        	<input type="hidden" name="id2" value="<%=c1.getCusid()%>">
-                                        	<td><span id="tops" style="color:red;"></span> </td>
+                                        <td >
+                                        <div class="product__cart__item__pic">
+                                            
+                                            
+                                        </div>
+                                     
+                                   </td>
+                                   <%total=total+c1.getPprice(); %>
+                                    <td >
+                                        <div class="product__cart__item__text">
+                                        <%int pid=c1.getPid(); %>
+                                        <form action="ProductController" method="post">
+                                        	<input type="hidden" name="id2" value="<%=pid%>">
+                                        	<button type="submit" name="action" class="site-btn" value="deletefromcart">delete</button>
                                         </form>
                                            
                                         </div>
                                     </td>
-                                       
-                                    
-                                        <%total=total+c1.getPprice(); %>
-                                        
-                                    
-                                    <td class="cart__price"><%=c1.getPprice() %></td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                  
                                 </tr>
                                 <%} %>
                             </tbody>
@@ -277,10 +307,10 @@ function searchInfo()
                 <div class="col-lg-4">
                     <div class="cart__discount">
                         <h6>Discount codes</h6>
-                        <form action="#">
+                        <form action="CartController" method="post">
                             <input type="text" placeholder="Coupon code">
                             <button type="submit">Apply</button>
-                        </form>
+											                        
                     </div>
                     <div class="cart__total">
                         <h6>Cart total</h6>
@@ -288,9 +318,11 @@ function searchInfo()
                             <li>Subtotal <span> <%=total %></span></li>
                             <li>Total <span> <%=total %></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a  href="customer-checkout.jsp" class="site-btn" >Proceed to CheckOut</a>
+                        
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </section>

@@ -41,13 +41,16 @@ else{
 	response.sendRedirect("seller-login.jsp");
 }
 %>
+   
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
    
-    <!-- Header Section Begin -->
+    
+    <!-- Offcanvas Menu End -->
+
     <!-- Header Section Begin -->
     <header class="header">
         
@@ -61,7 +64,7 @@ else{
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="customer-index.jsp">Home</a></li>
+                            <li class="active"><a href="seller-index.jsp">Home</a></li>
                             <li><a href="#">Product</a>
                                 <ul class="dropdown">
                                     <li><a href="seller-upload-product.jsp">Upload Product</a></li>
@@ -79,12 +82,7 @@ else{
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
@@ -99,11 +97,11 @@ else{
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h4>Shopping Cart</h4>
+                        <h4>Your Products</h4>
                         <div class="breadcrumb__links">
-                            <a href="./index.jsp">Home</a>
-                            <a href="./shop.jsp">Shop</a>
-                            <span>Shopping Cart</span>
+                            <a href="./seller-index.jsp">Home</a>
+                            <a href="./seller-manage-product.jsp">Manage products</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -205,7 +203,7 @@ else{
                                         <%int pid=p.getPid(); %>
                                         <form action="ProductController" method="post">
                                         	<input type="hidden" name="id2" value="<%=pid%>">
-                                        	<input type="submit" name="action" value="delete">
+                                        	<button type="submit" name="action" class="site-btn" value="delete4">delete</button>
                                         </form>
                                            
                                         </div>
@@ -213,6 +211,224 @@ else{
                                     
                                 </tr>
 							<%  }%>
+							<%List<Product> list1=ProductDao.getShoesBySid(id); %>
+							<% for(Product p:list1){ %>
+							
+                                <tr>
+                                	 <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="uploaded images/<%=p.getImage() %>" alt="">
+                                        </div>
+                                       
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPname() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                   
+                                   
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPprice() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPcategory() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <a href="seller-edit-single.jsp">Edit</a>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                        <%int pid=p.getPid(); %>
+                                        <form action="ProductController" method="post">
+                                        	<input type="hidden" name="id2" value="<%=pid%>">
+                                        	<button type="submit" name="action" class="site-btn" value="delete1">delete</button>
+                                        </form>
+                                           
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+							<%  }%>
+							<%List<Product> list2=ProductDao.getSpecsBySid(id); %>
+							<% for(Product p:list2){ %>
+							
+                                <tr>
+                                	 <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="uploaded images/<%=p.getImage() %>" alt="">
+                                        </div>
+                                       
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPname() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                   
+                                   
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPprice() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPcategory() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <a href="seller-edit-single.jsp">Edit</a>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                        <%int pid=p.getPid(); %>
+                                        <form action="ProductController" method="post">
+                                        	<input type="hidden" name="id2" value="<%=pid%>">
+                                        	<button type="submit" name="action" class="site-btn" value="delete2">delete</button>
+                                        </form>
+                                           
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+							<%  }%>
+							<%List<Product> list3=ProductDao.getWatchesBySid(id); %>
+							<% for(Product p:list3){ %>
+							
+                                <tr>
+                                	 <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="uploaded images/<%=p.getImage() %>" alt="">
+                                        </div>
+                                       
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPname() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                     <td >
+                                       &nbsp;
+                                    </td>
+                                   
+                                   
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPprice() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <h6><%=p.getPcategory() %></h6>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                            <a href="seller-edit-single.jsp">Edit</a>
+                                        </div>
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                    <td >
+                                       &nbsp;
+                                    </td>
+                                     <td class="product__cart__item">
+                                        <div class="product__cart__item__text">
+                                        <%int pid=p.getPid(); %>
+                                        <form action="ProductController" method="post">
+                                        	<input type="hidden" name="id2" value="<%=pid%>">
+                                        	<button type="submit" name="action" class="site-btn" value="delete3">delete</button>
+                                        </form>
+                                           
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+							<%  }%>
+							
+							
                             </tbody>
                         </table>
                     </div>

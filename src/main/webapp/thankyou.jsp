@@ -1,48 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ page import="java.util.*" %>
+    <%@ page import="Model.Cart" %> 
+  <%@page import= "Dao.CartDao" %>
+  <%@page import="java.sql.*" %>
+  <%@ page import="connection.DBConnection" %>
+ <%@page import= "java.text.DateFormat" %> 
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Calendar" %>
+<%@ page import="java.util.Date" %>
+  
+    
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-		<script type="text/javascript">
-		
-		expiration = new Date;
-		expiration.setMonth(expiration.getMonth()+6)
-		counter = eval(cookieVal("total_visited"))
-		counter++
-		document.cookie = "total_visited="+counter+";expires=" + expiration.toGMTString()
-		 
-		 
-		function cookieVal(cookieName) {
-			thisCookie = document.cookie.split("; ")
-			for (i=0; i<thisCookie.length; i++){
-				if (cookieName == thisCookie[i].split("=")[0]){
-					return thisCookie[i].split("=")[1]
-				}
-			}
-			return 0;
-		}
-		 
-		document.getElementById('result').innerHTML = "<center><h3>You visited this page <label style='font-size:40px;' class='text-info'>"+counter+"</label> times.</h3></center>";
-
-		
-		
-		</script>
-		
+					
 	</head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<a class="navbar-brand">Sourcecodester</a>
-		</div>
-	</nav>
-	<div class="col-md-3"></div>
-	<div class="col-md-6 well">
-		<h3 class="text-primary">JavaScript - Simple Visitor Page Count</h3>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<div id="result"></div>
-	</div>
-<script src="js/script.js"></script>
+
+<% 
+ DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");	
+
+Date currentDate = new Date();
+System.out.println(dateFormat.format(currentDate));
+int d=currentDate.getDate()+1;
+int m=currentDate.getMonth()+1;
+int y=currentDate.getYear()-100+2000;
+String dte=String.valueOf(y);String.valueOf(m);String.valueOf(d);
+System.out.print(dte);
+Date cudate = new SimpleDateFormat("dd/mm/yyyy").parse(dte);
+
+out.print(cudate);
+ %>
 </body>
 </html>
